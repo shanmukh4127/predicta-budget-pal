@@ -4,6 +4,15 @@ import { BudgetOverview } from '@/components/dashboard/BudgetOverview';
 import { GoalsTracking } from '@/components/dashboard/GoalsTracking';
 import { RecentTransactions } from '@/components/dashboard/RecentTransactions';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { 
   DollarSign, 
   TrendingUp, 
@@ -12,7 +21,14 @@ import {
   PlusCircle,
   Bell,
   Settings,
-  User
+  User,
+  LogOut,
+  UserCircle,
+  CreditCard as PaymentIcon,
+  Shield,
+  HelpCircle,
+  Moon,
+  Palette
 } from 'lucide-react';
 
 const Index = () => {
@@ -35,12 +51,80 @@ const Index = () => {
               <Button variant="ghost" size="sm">
                 <Bell className="h-4 w-4" />
               </Button>
-              <Button variant="ghost" size="sm">
-                <Settings className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <User className="h-4 w-4" />
-              </Button>
+              
+              {/* Settings Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm">
+                    <Settings className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <Palette className="h-4 w-4 mr-2" />
+                    Theme
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Moon className="h-4 w-4 mr-2" />
+                    Dark Mode
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Bell className="h-4 w-4 mr-2" />
+                    Notifications
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Shield className="h-4 w-4 mr-2" />
+                    Privacy
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <HelpCircle className="h-4 w-4 mr-2" />
+                    Help & Support
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Profile Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                    <Avatar className="h-6 w-6">
+                      <AvatarImage src="" alt="Alex" />
+                      <AvatarFallback className="bg-primary text-primary-foreground text-xs">
+                        AL
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium">Alex Johnson</p>
+                      <p className="text-xs text-muted-foreground">alex@university.edu</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <UserCircle className="h-4 w-4 mr-2" />
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <PaymentIcon className="h-4 w-4 mr-2" />
+                    Payment Methods
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Target className="h-4 w-4 mr-2" />
+                    Financial Goals
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="text-destructive">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
